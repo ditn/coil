@@ -418,7 +418,7 @@ internal class RealImageLoader(
         }
 
         val bitmap = transformations.fold(drawable.bitmap) { bitmap, transformation ->
-            transformation.transform(bitmapPool, bitmap).also { ensureActive() }
+            transformation.transform(bitmapPool, bitmap, size).also { ensureActive() }
         }
         return@run result.copy(drawable = bitmap.toDrawable(context))
     }
